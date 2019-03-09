@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protocols;
+
+service SatrapServer {
+    rpc SendSatrap (SatrapRequest) returns (GenericReply) {}
+}
+
+message SatrapRequest {
+    string name = 1;
+    repeated Tax taxes = 2;
+}
+
+message Tax {
+    string name = 1;
+    int32 value = 2;
+}
+
+message GenericReply {
+    string message = 1;
+}
