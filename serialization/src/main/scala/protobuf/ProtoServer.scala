@@ -52,6 +52,9 @@ class ProtoServer(executionContext: ExecutionContext) {
 
   private class SatrapServerImp extends SatrapServerGrpc.SatrapServer {
     override def sendSatrap(request: SatrapRequest) = {
+      val originRequest = SatrapRequest.toByteArray(request)
+      println(originRequest.mkString(" "))
+      println(SatrapRequest.parseFrom(originRequest))
       val reply = GenericReply(request.name)
       Future.successful(reply)
     }
